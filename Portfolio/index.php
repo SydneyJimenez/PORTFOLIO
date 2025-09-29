@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITEL112-18</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff9800;
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ff9800;
+        }
+
+        .navbar .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .navbar .social-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar .social-icons a {
+            color: white;
+            font-size: 22px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar .social-icons a:hover {
+            color: #ff9800;
+            transform: scale(1.1);
+        }
+
+        body[data-spy="scroll"] .navbar {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background-color: #111;
+        }
+
+        section {
+            padding: 100px 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar .social-icons {
+                gap: 15px;
+                margin-top: 15px;
+            }
+        }
+
+        #home {
+            background-color: #333;
+        }
+
+        #work {
+            background-color: #e9e9e9;
+        }
+
+        #about {
+            background-color: #f4f4f4;
+        }
+
+        #contact {
+            background-color: #e9e9e9;
+        }
+
+        .cl_white {
+            color: white;
+        }
+
+        .skill-icon:hover {
+            transform: scale(1.2);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-box img {
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        .profile-box img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .row {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .row.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #home .row {
+            opacity: 1;
+        transform: translateY(0);
+        transition: none;
+        }
+
+        .skill-row img {
+            width: 100px;
+            height: 150px;
+            object-fit: scale-down;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card img:hover {
+            opacity: 0.8;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .certificate-card img:hover {
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .panel:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .panel h4:hover {
+            color: #ff5722;
+        }
+
+        .panel p {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .panel:hover p {
+            transform: translateY(-10px);
+        }
+        
+    </style>
+    <script>
+        window.addEventListener('scroll', function() {
+            const rows = document.querySelectorAll('.row');
+            rows.forEach(function(row) {
+                if (row.getBoundingClientRect().top < window.innerHeight) {
+                    row.classList.add('visible');
+                }
+            });
+        });
+
+        $(document).ready(function() {
+    $('body').scrollspy({ target: '.navbar' });
+    });
+
+    </script>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#work">WORK</a>
+            <a href="#about">ABOUT ME</a>
+            <a href="#certificate">CERTIFICATES</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://x.com/justinbieber"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/sydneyjimenez3796ab2a2/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/JSydneyDS/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/sydjzcn_/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <section id="home" style="background: #333; color: white; padding: 100px 20px; position: relative; overflow: hidden; text-align: center;">
+        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 0;"></div>
+        <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: auto;">
+            <div class="row align-items-center justify-content-center mb-5 text-center" style="gap: 50px;">
+                <div class="col-md-4 description-box">
+                    <h1 style="font-size: 4rem; font-weight: bold; color: #ff9800;">Designer</h1>
+                    <p class="lead" style="font-size: 2rem; color: #f4f4f4; font-style: italic;">Crafting user-centric and visually stunning UI designs that enhance digital experiences.</p>
+
+                </div>
+
+                <div class="col-md-4 text-center profile-box">
+                    <img src="img/me.png" alt="Your Picture" style="width: 280px; height: 320px; border-radius: 50%; border: 6px solid #fff; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);">
+                </div>
+
+                <div class="col-md-4 description-box">
+                    <h1 style="font-size: 4rem; font-weight: bold; color: #ff9800;">Coder</h1>
+                    <p class="lead" style="font-size: 2rem; color: #f4f4f4; font-style: italic;">Transforming ideas into efficient code with expertise in web technologies.</p>
+                </div>
+            </div>
+
+            <div id="skills" class="text-center mb-5">
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #ff9800;; font-weight: bold;">My Skills</h2>
+                <div class="skill-row d-flex justify-content-center gap-5 flex-wrap">
+                    <img src="img/java.png" alt="Java" class="skill-icon">
+                    <img src="img/html.png" alt="HTML" class="skill-icon">
+                    <img src="img/css.png" alt="CSS" class="skill-icon">
+                    <img src="img/php.png" alt="PHP" class="skill-icon">
+                    <img src="img/javascript.png" alt="JavaScript" class="skill-icon">
+                    <img src="img/python.png" alt="Python" class="skill-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: #222; color: white; padding: 100px 20px; position: relative; overflow: hidden; text-align: center;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 0;"></div>
+    <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: auto;">
+        <h2 class="text-center" style="font-size: 3.5rem; color: #ff9800; margin-bottom: 30px; text-transform: uppercase; font-weight: bold; letter-spacing: 3px; opacity: 0; animation: fadeIn 1s forwards 0.5s;">About Me</h2>
+        <p class="lead" style="font-size: 1.5rem; color: #f4f4f4; margin-bottom: 40px; opacity: 0; animation: fadeIn 1s forwards 1s; font-style: italic;">
+            Hi! I'm Sydney D. Jimenez, a 3rd-year BS Information Technology student at New Era University. I'm passionate about
+            coding and designing, and I believe in the power of technology to solve real-world problems. With a love for learning and
+            growing, I'm constantly honing my skills to stay ahead in the ever-evolving world of tech.
+        </p>
+
+        <div class="row" style="margin-bottom: 40px;">
+            <div class="col-md-6 mb-4">
+                <div class="panel" style="background-color: #333; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out; overflow: hidden;">
+                    <h4 class="text-center" style="color: #ff9800; font-size: 2.2rem; padding: 20px 0; transition: transform 0.3s ease-in-out;">Educational Journey</h4>
+                    <p class="text-center" style="font-size: 1.5rem; padding: 0 15px; opacity: 0; animation: slideIn 1s forwards 1.5s;">Currently pursuing a Bachelor’s degree in Information Technology at New Era University, where I am learning a mix of programming, web development, and IT management.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="panel" style="background-color: #333; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out; overflow: hidden;">
+                    <h4 class="text-center" style="color: #ff9800; font-size: 2.2rem; padding: 20px 0; transition: transform 0.3s ease-in-out;">Hobbies and Interests</h4>
+                    <p class="text-center" style="font-size: 1.5rem; padding: 0 15px; opacity: 0; animation: slideIn 1s forwards 2s;">Aside from coding and web design, I enjoy photography, gaming, and staying up-to-date with the latest tech trends. I believe in creativity and innovation, both in my personal and professional life.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="work" style="background: #222; color: white; padding: 100px 20px; position: relative; overflow: hidden; text-align: center;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 0;"></div>
+    <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: auto;">
+        <h2 class="text-center" style="font-size: 3.5rem; color: #ff9800; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">My Projects</h2>
+        <p class="lead" style="font-size: 2.2rem; color: #f4f4f4; margin-bottom: 30px; font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Here are six of my laboratory projects that showcase my skills and creativity. Each project represents a step forward in my journey as a developer.
+        </p>
+
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab2.png" alt="Project 1" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 1</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Bootstrap Image, button, button group, dropdown, glyphicons, alert, and badges..</p>
+                        <a href="http://localhost/activity%202/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab7.png" alt="Project 2" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 2</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Building Projects using Bootstrap (E-commerce).</p>
+                        <a href="http://localhost/section%208/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab3.png" alt="Project 3" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 3</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Bootstrap panel, Collapse, List-group, Accordion, Tab, Dynamic, Pager, and Pagination.</p>
+                        <a href="http://localhost/activity%203/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab4.png" alt="Project 4" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 4</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Bootstrap navbar, Form, and Form Style Validation.</p>
+                        <a href="http://localhost/section%205/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab5.png" alt="Project 5" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 5</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Bootstrap, Modal, Carousel, Tool Tip, and Pop over.</p>
+                        <a href="http://localhost/section%206/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="project-card" style="background: #222; border-radius: 10px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                    <img src="img/lab6.png" alt="Project 6" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease-in-out;">
+                    <div class="card-content" style="padding: 20px;">
+                        <h4 style="color: #ff9800; transition: color 0.3s;">Laboratory 6</h4>
+                        <p style="font-size: 1.5rem; color: #ddd;">Bootstrap Scroll Spy.</p>
+                        <a href="http://localhost/section%207/" style="color: #ff9800; text-decoration: none; transition: color 0.3s;">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certificate" style="background: #222; color: white; padding: 100px 20px; position: relative; overflow: hidden; text-align: center;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 0;"></div>
+    <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: auto;">
+        <h2 class="text-center" style="font-size: 3.5rem; color: #ff9800; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">CERTIFICATIONS</h2>
+        <p class="lead" style="font-size: 2.2rem; color: #f4f4f4; margin-bottom: 30px; font-style: italic;">A collection of my accomplishments and professional growth.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="certificate-card" style="background: #333; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                <img src="img/certi1.png" alt="Certificate 1" style="width: 100%; border-radius: 10px; margin-bottom: 15px; transition: opacity 0.3s ease-in-out;">
+                <h3 style="font-size: 1.5em; color: #fff;">Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</h3>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=B0ED9FBC13237D076CD79627A208E73BA983B4963379CC03AF0DAF9E332193A6" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #ff9800; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">View Certificate</a>
+            </div>
+
+            <div class="certificate-card" style="background: #333; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                <img src="img/certi2.png" alt="Certificate 2" style="width: 100%; border-radius: 10px; margin-bottom: 15px; transition: opacity 0.3s ease-in-out;">
+                <h3 style="font-size: 1.5em; color: #fff;">Oracle Cloud Data Management 2023</h3>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=CFB24FFB33BD7701943B90EF117FB55D468BB6EFE9D78B2FC94BFF6A5613AD5E" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #ff9800; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">View Certificate</a>
+            </div>
+
+            <div class="certificate-card" style="background: #333; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                <img src="img/certi3.png" alt="Certificate 3" style="width: 100%; border-radius: 10px; margin-bottom: 15px; transition: opacity 0.3s ease-in-out;">
+                <h3 style="font-size: 1.5em; color: #fff;">Oracle Cloud Infrastructure 2023 Certified Foundations Associate</h3>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=EBB4BFE742387BE67DD9408B361B96752C0F8AD3ABFB9E8087A14BFCBD934D0A" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #ff9800; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">View Certificate</a>
+            </div>
+
+            <div class="certificate-card" style="background: #333; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                <img src="img/certi4.png" alt="Certificate 4" style="width: 100%; border-radius: 10px; margin-bottom: 15px; transition: opacity 0.3s ease-in-out;">
+                <h3 style="font-size: 1.5em; color: #fff;">SQL and Relational Database 101</h3>
+                <a href="https://courses.cognitiveclass.ai/certificates/4ce64d154ba3483c8a7c7fa297cea19b" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #ff9800; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">View Certificate</a>
+            </div>
+
+            <div class="certificate-card" style="background: #333; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out, box-shadow 0.3s;">
+                <img src="img/certi5.png" alt="Certificate 5" style="width: 100%; border-radius: 10px; margin-bottom: 15px; transition: opacity 0.3s ease-in-out;">
+                <h3 style="font-size: 1.5em; color: #fff;">Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</h3>
+                <a href="https://courses.cognitiveclass.ai/certificates/18a311579f25448db8a2bc6f373f67d0" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #ff9800; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">View Certificate</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="https://github.com/SydneyJimenez#certifications" style="background: #ff9800; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-size: 1.2em;">View All Achievements</a>
+        </div>
+    </div>
+</section>
+
+
+
+    <section id="contact" style="background: #222; color: white; padding: 100px 20px; position: relative; overflow: hidden; text-align: center;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: -1;"></div>
+    <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: auto;">
+        <h2 style="font-size: 2.5em; color: #ff9800; font-weight: bold; margin-bottom: 30px;">Contact Me</h2>
+        <p style="font-size: 1.5em; color: #f4f4f4; font-style: italic;">Feel free to reach out to me with any questions or messages. I'll get back to you as soon as possible!</p>
+    </div>
+    
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <form action="contact.php" method="post">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input class="form-control" placeholder="Your Name" type="text" style="padding: 15px; font-size: 1.1em; border-radius: 5px;">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input class="form-control" placeholder="Your Email" type="email" style="padding: 15px; font-size: 1.1em; border-radius: 5px;">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input class="form-control" placeholder="Subject" type="text" style="padding: 15px; font-size: 1.1em; border-radius: 5px;">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                <textarea class="form-control" rows="5" placeholder="Your Message" style="padding: 15px; font-size: 1.1em; border-radius: 5px;"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" style="background: #ff9800; color: white; padding: 15px; font-size: 1.2em; border-radius: 5px; border: none;">Send Message</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>
